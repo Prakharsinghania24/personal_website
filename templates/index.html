@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prakhar Singhania - Personal Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+ <!-- Navigation Bar -->
+<nav style="border-top: 2px solid black; border-bottom: 2px solid black; background-color: white; padding: 10px 0;">
+    <div style="display: flex; justify-content: center; gap: 30px; font-family: 'Times New Roman', serif; font-size: 16px;">
+        <a href="#about" style="text-decoration: none; color: black;">About Me</a>
+        <a href="#Achievements" style="text-decoration: none; color: black;">Achievements</a>
+        <a href="#Articles" style="text-decoration: none; color: black;">Articles</a>
+        <a href="#entrepreneurship" style="text-decoration: none; color: black;">Entrepreneurship</a>
+        <a href="#investing" style="text-decoration: none; color: black;">Investing</a>
+        <a href="resume.html" style="text-decoration: none; color: black;">Resume</a>
+    </div>
+</nav>
+
+<!-- Add spacing below navbar -->
+<div style="margin-top: 40px;"></div>
+
+
+
+    <!-- about me Section -->
+
+<div style="display: flex; align-items: center; justify-content: space-between; max-width: 900px; margin: auto;">
+    <div style="width: 60%; font-family: 'Times New Roman', serif; font-size: 16px; text-align: left;">
+        <h2 style="font-weight: bold;">Prakhar Singhania</h2>
+        <p>I am a graduate with B.Sc. in Economics and Finance with a Minor in Computer Science and Entrepreneurship from Ashoka University. I am passionate about the intersection of business, sustainability, and innovation.</p>
+        
+        <p><strong>Private Equity & Sustainability:</strong> I’m fascinated by businesses at the intersection of sustainability and profitability. I’m kickstarting my journey at Baring Private Equity Partners, focusing on companies at this crucial intersection.</p>
+        
+        <p><strong>Food Supply Chain & Innovation:</strong> Coming from a family business that supplies products to hotels, restaurants, and caterers (HoReCa), I’ve developed a keen interest in the farm-to-fork model. My focus is on improving shelf life, reducing supply chain costs, and driving efficiency in food distribution.</p>
+        
+        <p><strong>Entrepreneurship & Disruption:</strong> I love engaging with visionary founders who challenge the status quo. I'm always open to collaborating, brainstorming, and building the next big thing that pushes boundaries and redefines industries.</p>
+        
+        <p><strong>Dancing & Socializing:</strong> While I may not be a professional, I enjoy the energy of dancing—whether it's in a baraat or a casual gathering.</p>
+    </div>
+    
+    <div style="width: 35%; text-align: right;">
+        <img src="{{ url_for('static', filename='images/abtme2.jpg') }}" alt="Prakhar Singhania" style="max-width: 100%; height: auto; border-radius: 8px;">
+    </div>
+</div>
+
+
+
+<!-- Blog Section -->
+<section id="news" class="container my-5">
+    <div style="max-width: 900px; margin: auto;">
+        <h2 style="font-weight: bold; font-family: 'Times New Roman' ; text-align: left; margin-left: 0;">Select Achievements</h2>
+        <div style="overflow-y: auto; max-height: 400px; padding-right: 10px;">
+            <div style="display: flex; align-items: center; margin-bottom: 10px; height: 180px;">
+                <div style="width: 60%; font-family: 'Times New Roman', serif; font-size: 18px; text-align: left;">
+                    <p><strong>Blackstone Launchpad 2024:</strong> Prakhar Singhania, an undergraduate exchange student from India studying supply chain, food science and material science, stood at the lectern and spoke quickly,... <a href="{{ url_for('blog') }}" class="text-primary">Read More</a></p>
+                </div>
+                <div style="width: 40%; text-align: right;">
+                    <img src="/static/images/blackstone.jpg" alt="Blackstone Launchpad" style="max-width: 100%; height: 160px; border-radius: 8px;">
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; height: 180px;">
+                <div style="width: 60%; font-family: 'Times New Roman', serif; font-size: 18px; text-align: left;">
+                    <p><strong>Hilton Hospitality Hackathon:</strong> Hotel guests who think they’ve been mistakenly charged for a bottle of water from their room mini-bar or for an early check-in typically have to challenge the fees .... <a href="{{ url_for('blog') }}" class="text-primary">Read More</a></p>
+                </div>
+                <div style="width: 40%; text-align: right;">
+                    <img src="/static/images/hospitality.jpg" alt="Hilton Hospitality Hackathon" style="max-width: 100%; height: 160px; border-radius: 8px;">
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('blog') }}" class="btn btn-secondary">View All</a>
+        </div>
+    </div>
+</section>
+
+
+
+    </section>
+
+ <!-- Contact Section -->
+<section id="contact" style="max-width: 500px; margin: 50px auto; text-align: center; font-family: 'Times New Roman', serif;">
+    <h2 style="font-size: 24px; font-weight: bold;">Contact Me</h2>
+    <form action="send_email.php" method="POST">
+        <div style="margin-bottom: 15px;">
+            <input type="text" name="name" style="width: 100%; padding: 10px; border: 1px solid black; font-size: 14px;" placeholder="Your Name" required>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <input type="email" name="email" style="width: 100%; padding: 10px; border: 1px solid black; font-size: 14px;" placeholder="Your Email" required>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <textarea name="message" style="width: 100%; padding: 10px; border: 1px solid black; font-size: 14px;" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" style="background-color: black; color: white; padding: 10px 20px; font-size: 14px; border: none; cursor: pointer;">Send</button>
+        <form action="send_email.php" method="POST">
+
+    </form>
+</section>
+
+
+  <footer class="footer bg-dark text-white text-center p-3">
+    <p>&copy; 2025 Prakhar Singhania | 
+        <a href="resume.html" class="text-white">Download Resume</a>
+    </p>
+</footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

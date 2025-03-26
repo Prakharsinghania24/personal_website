@@ -1,0 +1,88 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: #343a40;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    background: #007bff;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    padding: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Sections */
+section {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+section h2 {
+    text-align: center;
+}
+
+/* Blog Preview Section */
+.blog-preview {
+    text-align: center;
+}
+
+.post {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Read More Button */
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.read-more:hover {
+    background: #0056b3;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #343a40;
+    color: white;
+    margin-top: 20px;
+}
+footer a {
+    color: #ffcc00;
+}
