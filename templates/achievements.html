@@ -1,0 +1,90 @@
+<!-- Navigation Bar -->
+<!-- Navigation Bar -->
+<nav style="border-top: 2px solid black; border-bottom: 2px solid black; background-color: white; padding: 10px 0;">
+    <div style="display: flex; justify-content: center; gap: 30px; font-family: 'Times New Roman', serif; font-size: 16px;">
+       <a href="{{ url_for('home') }}#about" style="text-decoration: none; color: black;">About Me</a>
+        <a href="{{ url_for('achievements') }}" style="text-decoration: none; color: black;">Achievements</a>
+        <a href="{{ url_for('article') }}" style="text-decoration: none; color: black;">Articles</a>
+        <a href="#Family Business" style="text-decoration: none; color: black;">Family Business</a>
+        <a href="{{ url_for('investing') }}" style="text-decoration: none; color: black;">Investing</a>
+        <a href="{{ url_for('resume') }}" style="text-decoration: none; color: black;">Resume</a>
+        <a href="{{ url_for('admin_login') }}" style="text-decoration: none; color: black;">Admin Login</a>
+    </div>
+</nav>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Achievements - Prakhar Singhania</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Times New Roman', serif;
+        }
+        .container-achievements {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .achievement-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            transition: transform 0.2s ease;
+            height: 100%;
+        }
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+        .achievement-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .achievement-card h5 {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .achievement-card p {
+            font-size: 15px;
+        }
+        .read-more {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div class="container-achievements">
+    <h2 style="font-weight: bold; font-size: 24px; margin-bottom: 30px;"> My Selected Achievements</h2>
+    <div class="row g-4">
+        {% for ach in achievements %}
+        <div class="col-md-6 col-lg-4 d-flex">
+            <div class="achievement-card">
+                {% if ach['image_filename'] %}
+                <img src="{{ url_for('static', filename='uploads/' ~ ach['image_filename']) }}" alt="{{ ach['title'] }}">
+                {% endif %}
+                <h5>{{ ach['title'] }}</h5>
+                <p>{{ ach['summary'] }}</p>
+                <a href="{{ ach['link'] }}" target="_blank" class=\"read-more\" style=\"color: black; text-decoration: none;\">Read More →</a>
+            </div>
+        </div>
+        {% else %}
+        <p>No achievements added yet.</p>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>

@@ -9,12 +9,11 @@ body {
 }
 
 /* Header */
-header {
-    background: #343a40;
-    color: white;
-    text-align: center;
-    padding: 2rem;
-}
+<div class="admin-heading" style="text-align: center; margin-top: 60px; margin-bottom: 40px;">
+    <h1 style="font-family: 'Times New Roman', serif; font-size: 28px; font-weight: normal; color: black; letter-spacing: 0.5px;">
+        Admin Login
+    </h1>
+</div>
 
 /* Navigation */
 nav ul {

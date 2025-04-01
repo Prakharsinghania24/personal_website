@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Achievement</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header style="text-align: center; margin-top: 40px;">
+    <h1 style="font-family: 'Times New Roman', serif;">Edit Achievement</h1>
+</header>
+
+<section style="max-width: 700px; margin: 40px auto; font-family: 'Times New Roman', serif;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, msg in messages %}
+                <div class="alert alert-{{ category }}">{{ msg }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <label>Title:</label><br>
+        <input type="text" name="title" value="{{ achievement.title }}" required style="width: 100%; padding: 10px; margin-bottom: 15px;"><br>
+
+        <label>Summary:</label><br>
+        <textarea name="summary" rows="4" required style="width: 100%; padding: 10px; margin-bottom: 15px;">{{ achievement.summary }}</textarea><br>
+
+        <label>Read More Link:</label><br>
+        <input type="url" name="link" value="{{ achievement.link }}" required style="width: 100%; padding: 10px; margin-bottom: 15px;"><br>
+
+        <label>Replace Image (optional):</label><br>
+        <input type="file" name="image" accept="image/*" style="margin-bottom: 20px;"><br>
+
+        {% if achievement.image_filename %}
+            <img src="{{ url_for('static', filename='uploads/' ~ achievement.image_filename) }}" style="max-height: 120px; margin-bottom: 20px;">
+        {% endif %}
+
+        <br>
+        <button type="submit" style="background-color: black; color: white; padding: 10px 20px; border: none;">💾 Save Changes</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('admin_achievements') }}" style="font-size: 14px; text-decoration: none;">← Back to Achievements</a>
+</section>
+
+</body>
+</html>

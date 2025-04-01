@@ -1,0 +1,44 @@
+<!-- Navigation Bar -->
+<nav style="border-top: 2px solid black; border-bottom: 2px solid black; background-color: white; padding: 10px 0;">
+    <div style="display: flex; justify-content: center; gap: 30px; font-family: 'Times New Roman', serif; font-size: 16px;">
+        <a href="#about" style="text-decoration: none; color: black;">About Me</a>
+        <a href="{{ url_for('achievements') }}" style="text-decoration: none; color: black;">Achievements</a>
+        <a href="{{ url_for('article') }}" style="text-decoration: none; color: black;">Articles</a>
+        <a href="#Family Business" style="text-decoration: none; color: black;">Family Business</a>
+        <a href="{{ url_for('investing') }}" style="text-decoration: none; color: black;">Investing</a>
+        <a href="{{ url_for('resume') }}" style="text-decoration: none; color: black;">Resume</a>
+        <a href="{{ url_for('admin_login') }}" style="text-decoration: none; color: black;">Admin Login</a>
+    </div>
+</nav>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header style="text-align: center; margin-top: 40px;">
+        <h1 style="font-family: 'Times New Roman', serif;">Admin Dashboard</h1>
+    </header>
+
+    <section style="max-width: 600px; margin: 40px auto; font-family: 'Times New Roman', serif; text-align: center;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, msg in messages %}
+                    <div class="alert alert-{{ category }}">{{ msg }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <p>Welcome to the Admin Panel. Use the options below:</p>
+
+        <div style="margin-top: 30px;">
+            <a href="{{ url_for('edit_about') }}" class="btn" style="display: block; margin: 10px;">✏️ Edit About Me</a>
+            <a href="{{ url_for('admin_achievements') }}" class="btn" style="display: block; margin: 10px;">🏆 Manage Achievements</a>
+            <a href="{{ url_for('admin_logout') }}" class="btn" style="display: block; margin: 10px;">📕 Logout</a>
+        </div>
+    </section>
+</body>
+</html>

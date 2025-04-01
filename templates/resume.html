@@ -1,3 +1,17 @@
+
+<!-- Navigation Bar -->
+<nav style="border-top: 2px solid black; border-bottom: 2px solid black; background-color: white; padding: 10px 0;">
+    <div style="display: flex; justify-content: center; gap: 30px; font-family: 'Times New Roman', serif; font-size: 16px;">
+       <a href="{{ url_for('home') }}#about" style="text-decoration: none; color: black;">About Me</a>
+        <a href="{{ url_for('achievements') }}" style="text-decoration: none; color: black;">Achievements</a>
+        <a href="{{ url_for('article') }}" style="text-decoration: none; color: black;">Articles</a>
+        <a href="#Family Business" style="text-decoration: none; color: black;">Family Business</a>
+        <a href="{{ url_for('investing') }}" style="text-decoration: none; color: black;">Investing</a>
+        <a href="{{ url_for('resume') }}" style="text-decoration: none; color: black;">Resume</a>
+        <a href="{{ url_for('admin_login') }}" style="text-decoration: none; color: black;">Admin Login</a>
+    </div>
+</nav>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,11 +51,10 @@
 </head>
 <body>
 
-    <h1>My Resume</h1>
+    
     <div class="resume-container">
         <iframe src="static/pdfs/Prakhar_Resume.pdf"></iframe>
         <br>
-        <a class="download-btn" href="static/pdfs/Prakhar_Resume.pdf" download="Prakhar_Resume.pdf">Download Resume</a>
     </div>
 
 </body>

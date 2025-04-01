@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit About Me</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Quill CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+    <header style="text-align: center; margin-top: 40px;">
+        <h1 style="font-family: 'Times New Roman', serif;">Edit About Me</h1>
+    </header>
+
+    <section style="max-width: 700px; margin: 40px auto; font-family: 'Times New Roman', serif;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, msg in messages %}
+                    <div class="alert alert-{{ category }}">{{ msg }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <!-- Hidden field to store the formatted HTML -->
+            <input type="hidden" name="about_content" id="about_content">
+
+            <!-- Quill editor container -->
+            <div id="editor" style="height: 300px; background-color: white;">
+                {{ about_content | safe }}
+            </div>
+
+            <br>
+            <button type="submit" onclick="submitForm()" style="background-color: black; color: white; padding: 10px 20px; font-size: 14px; border: none; cursor: pointer;">💾 Save Changes</button>
+        </form>
+
+        <br>
+        <a href="{{ url_for('admin_dashboard') }}" style="text-decoration: none; font-size: 14px;">← Back to Dashboard</a>
+    </section>
+
+    <!-- Quill JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <!-- Initialize Quill -->
+    <script>
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+
+        function submitForm() {
+            // Copy HTML content to hidden input before form submission
+            var aboutHtml = quill.root.innerHTML;
+            document.getElementById('about_content').value = aboutHtml;
+        }
+    </script>
+</body>
+</html>

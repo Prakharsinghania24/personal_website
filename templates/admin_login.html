@@ -1,0 +1,46 @@
+<!-- Navigation Bar -->
+<nav style="border-top: 2px solid black; border-bottom: 2px solid black; background-color: white; padding: 10px 0;">
+    <div style="display: flex; justify-content: center; gap: 30px; font-family: 'Times New Roman', serif; font-size: 16px;">
+       <a href="{{ url_for('home') }}#about" style="text-decoration: none; color: black;">About Me</a>
+        <a href="{{ url_for('achievements') }}" style="text-decoration: none; color: black;">Achievements</a>
+        <a href="{{ url_for('article') }}" style="text-decoration: none; color: black;">Articles</a>
+        <a href="#Family Business" style="text-decoration: none; color: black;">Family Business</a>
+        <a href="{{ url_for('investing') }}" style="text-decoration: none; color: black;">Investing</a>
+        <a href="{{ url_for('resume') }}" style="text-decoration: none; color: black;">Resume</a>
+        <a href="{{ url_for('admin_login') }}" style="text-decoration: none; color: black;">Admin Login</a>
+    </div>
+</nav>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header style="text-align: center; margin-top: 60px; margin-bottom: 40px;">
+    <h1 style="font-family: 'Times New Roman', serif; font-size: 28px; font-weight: normal; color: black; letter-spacing: 0.5px;">
+        Admin Login
+    </h1>
+</header>
+
+<section style="max-width: 400px; margin: 0 auto; font-family: 'Times New Roman', serif;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, msg in messages %}
+                <div class="alert alert-{{ category }}">{{ msg }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <input type="text" name="username" placeholder="Username" required style="width: 100%; padding: 10px; margin-bottom: 15px; font-size: 14px; border: 1px solid black;"><br>
+        <input type="password" name="password" placeholder="Password" required style="width: 100%; padding: 10px; margin-bottom: 15px; font-size: 14px; border: 1px solid black;"><br>
+        <button type="submit" style="background-color: black; color: white; padding: 10px 20px; font-size: 14px; border: none; cursor: pointer;">Login</button>
+    </form>
+</section>
+
+</body>
+</html>
