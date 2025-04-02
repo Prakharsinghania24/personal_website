@@ -29,11 +29,9 @@ def get_db_connection():
 def investing():
     return render_template("investing.html")
 
-
 @app.route("/article")
 def article():
     return render_template("article.html")
-
 
 def create_table():
     conn = get_db_connection()
@@ -62,7 +60,6 @@ create_table()
 @app.route("/resume")
 def resume():
     return render_template("resume.html")
-
 
 def login_required(f):
     @wraps(f)
