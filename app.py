@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 import sqlite3
 import os
 from functools import wraps
@@ -48,8 +48,9 @@ def create_table():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             summary TEXT NOT NULL,
-            link TEXT NOT NULL,
-            image_filename TEXT
+            link TEXT,
+            image_filename TEXT,
+            display_order INTEGER DEFAULT 0
         )
     """)
     conn.commit()
@@ -181,9 +182,26 @@ def edit_about():
 @login_required
 def admin_achievements():
     conn = get_db_connection()
-    achievements = conn.execute("SELECT * FROM achievements ORDER BY id DESC").fetchall()
+    achievements = conn.execute("SELECT * FROM achievements ORDER BY display_order ASC, id DESC").fetchall()
     conn.close()
     return render_template("admin_achievements.html", achievements=achievements)
+
+@app.route("/admin/achievements/reorder", methods=["POST"])
+@login_required
+def reorder_achievements():
+    data = request.get_json()
+    order_list = data.get("order", [])
+
+    if not order_list:
+        return jsonify({"status": "error", "message": "No order received"}), 400
+
+    conn = get_db_connection()
+    for i, achievement_id in enumerate(order_list):
+        conn.execute("UPDATE achievements SET display_order = ? WHERE id = ?", (i, achievement_id))
+    conn.commit()
+    conn.close()
+
+    return jsonify({"status": "success"})
 
 @app.route("/admin/achievements/new", methods=["GET", "POST"])
 @login_required
@@ -191,7 +209,7 @@ def new_achievement():
     if request.method == "POST":
         title = request.form["title"]
         summary = request.form["summary"]
-        link = request.form["link"]
+        link = request.form.get("link")
         image = request.files["image"]
         filename = None
 
@@ -223,7 +241,7 @@ def edit_achievement(id):
     if request.method == "POST":
         title = request.form["title"]
         summary = request.form["summary"]
-        link = request.form["link"]
+        link = request.form.get("link")
 
         image = request.files["image"]
         filename = achievement["image_filename"]
@@ -257,7 +275,7 @@ def delete_achievement(id):
 @app.route("/achievements")
 def achievements():
     conn = get_db_connection()
-    achievements = conn.execute("SELECT * FROM achievements ORDER BY id DESC").fetchall()
+    achievements = conn.execute("SELECT * FROM achievements ORDER BY display_order ASC, id DESC").fetchall()
     conn.close()
     return render_template("achievements.html", achievements=achievements)
 

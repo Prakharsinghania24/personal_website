@@ -6,6 +6,8 @@
     <title>Prakhar Singhania - Personal Website</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -13,7 +15,7 @@
 <!-- Navigation Bar -->
 <nav style="border-top: 2px solid black; border-bottom: 2px solid black; background-color: white; padding: 10px 0;">
     <div style="display: flex; justify-content: center; gap: 30px; font-family: 'Times New Roman', serif; font-size: 16px;">
-       <a href="{{ url_for('home') }}#about" style="text-decoration: none; color: black;">About Me</a>
+        <a href="{{ url_for('home') }}#about" style="text-decoration: none; color: black;">About Me</a>
         <a href="{{ url_for('achievements') }}" style="text-decoration: none; color: black;">Achievements</a>
         <a href="{{ url_for('article') }}" style="text-decoration: none; color: black;">Articles</a>
         <a href="#Family Business" style="text-decoration: none; color: black;">Family Business</a>
@@ -39,19 +41,26 @@
 </div>
 
 <!-- Contact Section -->
-<section id="contact" style="max-width: 500px; margin: 50px auto; text-align: center; font-family: 'Times New Roman', serif;">
-    <h2 style="font-size: 22px; font-weight: bold;">Contact</h2>
-    <p style="font-size: 16px;">For any inquiries, feel free to reach out at:</p>
-    <p style="font-size: 16px; font-style: italic; color: #333;">prakharsinghania081@gmail.com</p>
+<section id="contact" style="max-width: 900px; margin: 60px auto 50px auto; font-family: 'Times New Roman', serif;">
+    <h2 style="font-size: 22px; font-weight: bold; text-align: left;">Contact</h2>
+    <p style="font-size: 16px; text-align: left; margin-top: 10px;">Feel free to connect or reach out:</p>
+    <div style="display: flex; align-items: center; gap: 20px; margin-top: 10px; padding-left: 2px;">
+        <a href="mailto:prakharsinghania081@gmail.com" style="color: black; font-size: 25px;" title="Email">
+            <i class="bi bi-envelope-fill"></i> <span style="margin-left: 6px;"></span>
+        </a>
+        <a href="https://www.linkedin.com/in/prakharsinghania24/" target="_blank" style="color: black; font-size: 20px;" title="LinkedIn">
+            <i class="bi bi-linkedin" style="margin-left: 20px;"></i>
+        </a>
+    </div>
 </section>
 
-
 <!-- Footer -->
-<footer class="footer bg-dark text-white text-center p-3">
+<footer class="footer bg-dark text-white text-center p-3" style="font-family: 'Times New Roman', serif; font-size: 16px;">
     <p>&copy; 2025 Prakhar Singhania | 
-    <a href="{{ url_for('resume') }}" class="text-white">View Resume</a>
+        <a href="{{ url_for('resume') }}" class="text-white">View Resume</a>
     </p>
 </footer>
+
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

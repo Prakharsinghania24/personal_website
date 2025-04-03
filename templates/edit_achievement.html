@@ -27,8 +27,8 @@
         <label>Summary:</label><br>
         <textarea name="summary" rows="4" required style="width: 100%; padding: 10px; margin-bottom: 15px;">{{ achievement.summary }}</textarea><br>
 
-        <label>Read More Link:</label><br>
-        <input type="url" name="link" value="{{ achievement.link }}" required style="width: 100%; padding: 10px; margin-bottom: 15px;"><br>
+        <label>Read More Link (optional):</label><br>
+        <input type="url" name="link" value="{{ achievement.link or '' }}" style="width: 100%; padding: 10px; margin-bottom: 15px;"><br>
 
         <label>Replace Image (optional):</label><br>
         <input type="file" name="image" accept="image/*" style="margin-bottom: 20px;"><br>
@@ -38,7 +38,7 @@
         {% endif %}
 
         <br>
-        <button type="submit" style="background-color: black; color: white; padding: 10px 20px; border: none;">💾 Save Changes</button>
+        <button type="submit" style="background-color: black; color: white; padding: 10px 20px; border: none;">Save Changes</button>
     </form>
 
     <br>
